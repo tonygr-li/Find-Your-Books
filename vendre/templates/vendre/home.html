@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'selling/css/main.css' %}">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="{% static 'selling/images/favicon.ico' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        {% if title %}
+        <title>{{ title }} | TrouveTesLivres</title>
+        {% else %}
+        <title>TrouveTesLivres</title>
+        {% endif %}
+    </head>
+    <body>
+    <!--Header/navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light mobile-navbar fixed-navbar p-3 navbar-white-home">
+        <a class="navbar-brand" href="{% url 'sell-home-fr' %}">
+            <img src="{% static 'selling/images/TrouveTesLivres-Dark.svg' %}" width="220">
+        </a>
+        <button style="float:right" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about-fr' %}">À propos de nous</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile-fr' %}">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout-fr' %}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login-fr' %}">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register-fr' %}">S'inscire</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sell-home' %}">English</a>
+                </li>
+                <a href="{% url 'sell-fr' %}">
+                    <button class="btn btn-primary navbar-sell-button">Vendre</button>
+                </a>
+                <a href="{% url 'want-fr' %}">
+                    <button class="btn btn-outline-primary navbar-want-button">Vouloir</button>
+                </a>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} mb-0">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="blue-gradient">
+            <div class="gradient-container">
+                <div class="navbar centered-navbar">
+                    <nav class="navbar navbar-expand-lg navbar-light rounded centered-navbar-2">
+                        <div class="container-fluid">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-2-mobile mx-auto">
+                                    <a class="navbar-brand no-top-bottom-padding vert-center" href="{% url 'sell-home-fr' %}">
+                                        <img src="{% static 'selling/images/TrouveTesLivres.svg' %}" height="50">
+                                    </a>
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'about-fr' %}">À propos de nous</a>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'profile-fr' %}">Profil</a>
+                                    </li>
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'logout-fr' %}">Déconnexion</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'login-fr' %}">Connexion</a>
+                                    </li>
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'register-fr' %}">s'incrire</a>
+                                    </li>
+                                    {% endif %}
+                                    <li class="nav-item vert-center">
+                                        <a class="nav-link white-text" href="{% url 'sell-home' %}">English</a>
+                                    </li>
+                                    <a href="{% url 'sell-fr' %}" class="vert-center">
+                                        <button class="btn btn-primary home-navbar-sell-button">Vendre</button>
+                                    </a>
+                                    <a href="{% url 'want-fr' %}" class="vert-center">
+                                        <button class="btn btn-outline-primary home-navbar-want-button">Vouloir</button>
+                                    </a>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="blue-gradient-txt-container">
+                    <p class="head-top-txt">Achetez et vendez <br>vos manuels scolaires usagés</p>
+                    <p class="made-by-students-txt">Créé par des élèves, pour des élèves</p>
+                    <div class="search-form-home">
+                        <form class="search-bar-resp d-flex" action="{% url 'search-fr' %}">
+                            <input class="form-control me-2 search-height" type="search" placeholder="Search ISBN"
+                                   aria-label="Search" name="search">
+                            <button class="btn btn-warning button-browse-books search-height button-search-home"
+                                    type="submit">Chercher
+                            </button>
+                        </form>
+                    </div>
+                    <p class="search-format-txt">Format de recherche : numérique. <b class="format-special-color">ex:
+                        1111111111111</b><br>Pour les recherches de titres et d'auteurs, nous vous recommandons d'être concis.</p>
+                    <p class="participate-at-brebeufhx-txt">Ce site web a été conçu par BrébeufHx.<br>Participez à notre <a
+                            href="https://www.brebeufhackathon.com" class="brebeufhx-link">hackathon</a> pour en apprendre plus sur la programmation</p>
+                    <img src="{% static 'selling/images/home-orange-book.png' %}" class="orange-book" width="300">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="what-is-isbn2">
+        <p class="ISBN-title2">Qu'est ce que l'ISBN?</p>
+        <!-- New div -->
+        <div class="isbn-flex">
+            <div class="isbn-text-width">
+                <p class="isbn-explain2">Le numéro à 13 chiffres servant à identifier un livre,<br>appelé ISBN, se trouve généralement<br>au dos de la couverture<br>de
+                     chaque livre.</p>
+            </div>
+            <div>
+                <img src="{% static 'selling/images/ISBN-img.png' %}" width="300" class="">
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <br><br>
+        <div class="container">
+            <div class="bottom-div">
+                <div class="color-white">
+                    <h4>INFO</h4>
+                    <div>
+                        <p><a href="{% url 'guide-fr' %}" class="link-footer">Guide d'utilisation</a></p>
+                        <p><a href="{% url 'about-fr' %}" class="link-footer">À propos de nous</a></p>
+                        <p><a href="{% url 'terms-of-use-fr' %}" class="link-footer">Termes et conditions</a></p>
+                        <p><a href="https://www.brebeufhackathon.com/" class="link-footer">BrébeufHx</a></p>
+                    </div>
+                </div>
+                <div class="color-white">
+                    <h4>SOCIAL</h4>
+                    <div>
+                        <p><a href="https://www.instagram.com/brebeufhx" class="link-footer">Instagram</a></p>
+                        <p><a href="https://www.facebook.com/brebeufHX/" class="link-footer">Facebook</a></p>
+                        <p><a href="https://www.youtube.com/channel/UCNrCYOe83whQl5ini0BFl0g" class="link-footer">YouTube</a></p>
+                        <p><a href="mailto: info@brebeufhackathon.com" class="link-footer">Courriel</a></p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h6 class="last-copyright">
+                &#169;2021 TrouveTesLivres
+            </h6>
+            <div class="footer-brebeufhx">
+                <img src="{% static 'selling/images/website_created_brebeufhx.png' %}" height="70" class="mt-5">
+            </div>
+        </div>
+        <br><br>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    </body>
+</html>

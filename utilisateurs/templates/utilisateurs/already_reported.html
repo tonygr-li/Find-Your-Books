@@ -1,0 +1,15 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <fieldset class="form-group">
+            <legend class="colored-legend">Vous avez déjà signalé cet utilisateur.</legend>
+            <p>Vous ne pouvez pas signaler un utilisateur plusieurs fois.</p>
+        </fieldset>
+        <div class="pt-3 submit-blue-button">
+            <small class="text-muted"><a href="{% url 'post-info-fr' reported.pk%}">Retourner aux publications</a></small><br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

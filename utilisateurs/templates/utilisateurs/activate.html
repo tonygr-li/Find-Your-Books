@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+Bonjour {{ user.username }},
+
+Veuillez cliquer sur le lien ci-dessous pour confirmer votre courriel:
+
+http://{{ domain }}{% url 'activate-fr' uidb64=uid token=token %}
+
+{% endautoescape %}

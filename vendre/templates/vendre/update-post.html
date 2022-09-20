@@ -1,0 +1,21 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST" id="post_form" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Modifier l'annonce</legend>
+
+                {{ form.as_p }}
+
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger form-submit-button" type="submit">Mettre à jour</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

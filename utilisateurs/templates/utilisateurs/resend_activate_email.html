@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Renvoyer le courriel d'activation</legend>
+                <p>Veuillez vous assurer que vous avez verifié vos pourriels.</p>
+                {{ form.as_p }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger navbar-sell-button submit-blue-button register-button" type="submit">Renvoyer</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

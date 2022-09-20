@@ -1,0 +1,25 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5 pb-5">
+    <div class="ui divided items">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Annonce signalée</th>
+                <th scope="col">Categorie de la signalisation</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in items %}
+            <tr>
+                <td><a href="{% url 'post-info-fr' item.reported.pk %}">{{ item.reported }}</a></td>
+              <td>{{ item.category }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <a class="red-link" href="{% url 'dismiss-report-fr' pk=first_item.reported.author.pk %}">Annuler le signalement</a>
+    </div>
+</div>
+{% endblock content %}

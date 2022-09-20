@@ -1,0 +1,15 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <fieldset class="form-group">
+            <legend class="colored-legend">Vous n'avez pas les autorisations nécéssaires pour accéder à cette page</legend>
+            <p>Cette page est réservé aux membres de TrouveTesLivres</p>
+        </fieldset>
+        <div class="pt-3 submit-blue-button">
+            <small class="text-muted"><a href="{% url 'sell-home-fr' %}">Retourner à l'accueil</a></small><br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

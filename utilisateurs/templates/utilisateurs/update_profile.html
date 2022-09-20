@@ -1,0 +1,21 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Modifier le profil</legend>
+                {{ form.as_p  }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger navbar-sell-button submit-blue-button" type="submit">Mettre à jour</button>
+            </div>
+        </form>
+        <div class="mt-2">
+            <a class="secondary-color-link reset-pword-margin" href="{% url 'reset_password-fr' %}">Réinitialiser le mot de passe</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5 pb-5">
+    <h2>Staff</h2>
+    <p>Nombre de publications: {{ post_number }}</p>
+    <p>Nombre d'utilisateurs: {{ user_number }}</p>
+
+    {% for i in report_leaders %}
+    <p>{{ i.reported }}</p>
+    {% endfor %}
+
+    {% for i in expired_posts %}
+    <p style="color:red;">{{ i.title }}</p>
+    {% endfor %}
+    <a href="{% url 'report-leaders-fr' %}">
+        <button class="btn btn-outline-secondary rectangular-border" style="margin-right:1rem;">Utilisateurs les plus signalé</button>
+    </a>
+    <a href="{% url 'outdated-posts-fr' %}">
+        <button class="btn btn-outline-danger rectangular-border">Supprimer les vielles publications</button>
+    </a>
+</div>
+{% endblock content %}

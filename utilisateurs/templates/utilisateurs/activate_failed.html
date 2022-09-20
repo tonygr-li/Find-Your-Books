@@ -1,0 +1,15 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Activation de l'utilisateur échouée</legend>
+                <p>Vous ne pouvez utiliser le lien d'activation qu'une seule fois.</p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock content %}

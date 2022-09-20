@@ -1,0 +1,18 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pb-5 pt-5">
+    <div>
+      <h2>About Us</h2>
+      <br>
+      <img src="{% static 'selling/images/Aboutus.jpg' %}" class="img-fluid" alt="About">
+      <hr>
+      <br>
+      <p class="primary-color"><b>TrouveTesLivres a été créé par des étudiants responsables de l'organisation de BrébeufHx, le hackaton annuel du Collège Jean-de-Brébeuf. Notre mission est de simplifier la vente et les échanges de manuels scolaires afin de réduire l'impact environnemental lié à l'achat de nouveaux manuels scolaires. De plus, nous tentons d'encourager les étudiants qui possèdent certaines connaissances en programmation à participer à l'amélioration du monde dans lequel nous vivons en participant à la création de projets qui répondent à un besoin du quotidien, comme le fait cette initiative.</b></p>
+      <p>Vous voulez en apprendre plus sur la programmation? Visitez <a href="www.brebeufhackathon.com">www.brebeufhackathon.com</a> pour en apprendre plus sur notre évènement.</p>
+      <b style="margin-bottom:0;">Pour les curieux, notre site web a été conçus en utilisant les languages suivants:</b>
+        <p style="margin-bottom:0;">Front-end (partie visuelle) : HTML/CSS avec Bootstrap et Semantic-UI</p>
+        <p>Back-end (partie fonctionelle): Django (Python)</p>
+    </div>
+</div>
+{% endblock content %}

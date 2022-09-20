@@ -1,0 +1,15 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <fieldset class="form-group">
+            <legend class="colored-legend">You are not allowed to view this page</legend>
+            <p>This part of the website is reserved for FindYourBooks staff</p>
+        </fieldset>
+        <div class="pt-3 submit-blue-button">
+            <small class="text-muted"><a href="{% url 'sell-home' %}">Return home</a></small><br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

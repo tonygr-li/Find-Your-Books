@@ -1,0 +1,209 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pb-3">
+    <h2 class="pt-5">Guide</h2>
+    <p>Welcome to our website's guide. Here, we help you navigate our website. However, if you still have questions, you can email <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a> and we will be glad to help you!</p>
+    <div class="accordion pb-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            How do I create an account?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <strong>You need to <a href="{% url 'register' %}">sign up</a>.</strong> Afterwards, you will receive a confirmation email to make sure that the email you submit while signing up is really yours. If you don’t receive an email, please make sure you check your spam folder. If you still don’t find the email after 10 minutes, you can receive another activation email (found under <a href="{% url 'login' %}">login</a>) and you can try to sign up again.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            For which services do I need to create an account?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              You need to create an account only if you wish to publish a post (Want or Sell) or report a user. Buying a book and viewing posts does not require one.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            How do I search?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              This website uses <i>contains</i> search. This means that the website searches for posts that contains your search. For example, if you search for the ISBN “123”, it will look for all occurrences of “123” in our database. This means that results for this search would include “1234567891011”, “2341233447672”, and “3212394583582”, but it won’t detect “1, 2, 3” or “1-2-3”. This is why the most reliable way for searching is to use the ISBN of the book you wish to buy/sell, instead of the name or the author of the book.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            How do I change my profile information?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              You can change your profile information <a href="{% url 'update-profile' %}">here</a>.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            How do I report a user?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              You can only report a user once. We trust that you won’t abuse this feature.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            How do I contact a seller?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              You can contact them by email or by phone. This information is available under the contact section in each post.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+            How do I view each post’s information?
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <img src="{% static 'selling/images/post.png' %}" width="1000">
+            <p class="mt-2">A: post title</p>
+            <p>B: date published</p>
+            <p>C: postal code where the item will be exchanged</p>
+            <p>D: post description</p>
+            <p>E: item price</p>
+            <h4>After clicking on the title of the post:</h4>
+            <img src="{% static 'selling/images/post_info.png' %}" width="1000">
+            <p>1: post title</p>
+            <p>2: item price</p>
+            <p>3: date published</p>
+            <p>4: selling/buying location</p>
+            <p>5: item description</p>
+            <p>6: book author</p>
+            <p>7: contact information</p>
+            <p>8: report user</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingEight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+            How long does a post stay active?
+          </button>
+        </h2>
+        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            All posts will be removed 60 days after being published.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingNine">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+            What is the maximum number of posts per user?
+          </button>
+        </h2>
+        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            50 posts.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+            What is the recommended search process?
+          </button>
+        </h2>
+        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>1. Enter your book’s ISBN into the search bar</p>
+            <p>2. Browse the search result</p>
+            <p>3. Click on the post’s title to view more detailed information (images, description, …)</p>
+            <p>4. After finding a post that meets your satisfaction, find the email or phone number (if available) under the contact section</p>
+            <p>5. Contact the user to schedule a meeting</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFourteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+            What rules do I need to follow?
+          </button>
+        </h2>
+        <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Please take a look at our terms and conditions, which apply if you use our website.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFifteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+            Can I post duplicate posts?
+          </button>
+        </h2>
+        <div id="collapseFifteen" class="accordion-collapse collapse" aria-labelledby="headingFifteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            No, you may not. Your account will receive a warning which could result in a ban.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingEleven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+            Any bugs or typos?
+          </button>
+        </h2>
+        <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Contact us at <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwelve">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+            Account hacked or terminated?
+          </button>
+        </h2>
+        <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Contact us at <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThirteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+            Any other inquiries?
+          </button>
+        </h2>
+        <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Contact us at <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Report user {{ reported.author.username }}</legend>
+                {{ form.as_p  }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger navbar-sell-button submit-blue-button" type="submit">Report</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

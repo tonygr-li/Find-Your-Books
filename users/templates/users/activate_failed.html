@@ -1,0 +1,15 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Activate user failed</legend>
+                <p>You can only use the activation link once.</p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock content %}

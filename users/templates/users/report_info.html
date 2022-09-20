@@ -1,0 +1,25 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5 pb-5">
+    <div class="ui divided items">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Post reported</th>
+                <th scope="col">Report category</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in items %}
+            <tr>
+                <td><a href="{% url 'post-info' item.reported.pk %}">{{ item.reported }}</a></td>
+              <td>{{ item.category }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <a class="red-link" href="{% url 'dismiss-report' pk=first_item.reported.author.pk %}">Dismiss reports</a>
+    </div>
+</div>
+{% endblock content %}

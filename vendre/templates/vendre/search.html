@@ -1,0 +1,97 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5 pb-5">
+    <p class="search-result-line">Affiche {{ num_results }} résultats pour: <u>{{ result }}</u></p>
+    {% if num_results == 0 %}
+    <div class="what-is-isbn2">
+        <p class="ISBN-title2">Qu'est ce que l'ISBN?</p>
+        <!-- New div -->
+        <div class="isbn-flex">
+            <div class="isbn-text-width">
+                <p class="isbn-explain2">>Le numéro à 13 chiffres servant à identifier un livre,<br>appelé ISBN se trouve généralement<br>au dos de la couverture<br>de
+                     chaque livre.</p>
+            </div>
+            <div>
+                <img src="{% static 'selling/images/ISBN-img.png' %}" width="300" class="">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if num_results > 0 %}
+    <div class="btn-group me-2" role="group" aria-label="First group">
+        <a href="{% url 'search-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border">Trier par date de publication (plus récente)</button>
+        </a>
+        <a href="{% url 'search-old-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border">Trier par date de publication (moins récente)</button>
+        </a>
+        <a href="{% url 'low-price-search-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border">Trier par prix (Croissant)</button>
+        </a>
+        <a href="{% url 'high-price-search-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border">Trier par prix (Décroissant)</button>
+        </a>
+      </div>
+    <div class="btn-group me-2" role="group" aria-label="First group">
+        <a href="{% url 'search-offer-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border mobile-filter">Vend ce livre</button>
+        </a>
+        <a href="{% url 'search-want-fr' %}">
+            <button type="button" class="btn btn-outline-secondary rectangular-border mobile-filter">Recherche ce livre</button>
+        </a>
+      </div>
+    {% endif %}
+    <div class="ui divided items">
+        {% for item in posts.object_list %}
+        <div class="item">
+            <div class="image">
+                <img src="{{ item.main_img.url }}">
+            </div>
+            <div class="content item-container">
+                <p>
+                    <a class="header item-title" href="{% url 'post-info-fr' item.pk %}">
+                        {% if item.sell == False %}Recherche: {% endif %}{{ item.title }}
+                    </a>
+                    <b class="item-price-right">{{ item.price }}$</b>
+                    <br>
+                    {% if item.author == user %}
+                    <a class="edit-post-link skip-line" href="{% url 'update-post-fr' item.pk %}">Modifier</a>
+                    <a class="edit-post-link" href="{% url 'update-post-img-fr' item.pk %}">Modifier les images additionnelles</a>
+                    <a class="edit-post-link delete-post-link" href="{% url 'delete-post-fr' item.pk %}">Supprimer</a>
+                    {% endif %}
+                </p>
+
+                <div class="meta">
+                    <span>{{ item.postal_code }} &emsp; | &emsp; {{ item.date_posted|date:"d/m/Y" }}</span>
+                </div>
+                <div class="description item-description">
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if num_results > 0 %}
+    <div class="align-right">
+      <nav>
+          <ul class="pagination">
+              {% if posts.has_previous %}
+                <li class="page-item"><a class="page-link" href="?{% if result %}search={{ result }}&{% endif %}page={{ posts.previous_page_number }}">Précédent</a></li>
+              {% endif %}
+              {% for pg in posts.paginator.page_range %}
+                {% if posts.number == pg %}
+                    <li class="page-item active"><a class="page-link" href="?{% if result %}search={{ result }}&{% endif %}page={{ pg }}">{{ pg }}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?{% if result %}search={{ result }}&{% endif %}page={{ pg }}">{{ pg }}</a></li>
+                {% endif %}
+              {% endfor %}
+              {% if posts.has_next %}
+                <li class="page-item"><a class="page-link" href="?{% if result %}search={{ result }}&{% endif %}page={{ posts.next_page_number }}">Suivant</a></li>
+              {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

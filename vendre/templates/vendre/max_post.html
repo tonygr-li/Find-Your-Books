@@ -1,0 +1,13 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <h1>Votre limite d'anonce est atteinte</h1>
+        <p>Vous avez atteint la limite d'annonces que vous pouvez publier sur ce site. Pour continuer à publier, supprimez quelques-unes de vos annonces.</p>
+        <div class="pt-3">
+            <small class="text-muted"><a href="{% url 'sell-home-fr' %}">Retourner à l'accueil</a></small>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5 pb-5">
+    <h2>Staff</h2>
+    <p>Total number of posts: {{ post_number }}</p>
+    <p>Total number of users: {{ user_number }}</p>
+
+    {% for i in report_leaders %}
+    <p>{{ i.reported }}</p>
+    {% endfor %}
+
+    {% for i in expired_posts %}
+    <p style="color:red;">{{ i.title }}</p>
+    {% endfor %}
+    <a href="{% url 'report-leaders' %}">
+        <button class="btn btn-outline-secondary rectangular-border" style="margin-right:1rem;">Report leaders</button>
+    </a>
+    <a href="{% url 'outdated-posts' %}">
+        <button class="btn btn-outline-danger rectangular-border">Delete outdated posts</button>
+    </a>
+</div>
+{% endblock content %}

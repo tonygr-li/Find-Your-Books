@@ -1,0 +1,209 @@
+{% extends "vendre/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pb-3">
+    <h2 class="pt-5">Guide</h2>
+    <p>Bienvenue sur notre site web! Nous sommes ici pour vous aider à naviguer à travers le site. Si jamais nous ne répondons pas à vos question sur cette page, n'hésitez pas à nous écrire à <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>, et il nous fera plaisir de vous aider!</p>
+    <div class="accordion pb-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Comment créer un compte?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <strong>Vous devez <a href="{% url 'register-fr' %}">vous inscrire</a>.</strong> Ensuite, vous recevrez un courriel de confirmation afin de valider votre identité. Toutefois, il se peut que ce courriel se trouve dans vos "spam", alors assurez-vous de vérifier toutes vos boites de réception. Si après 10 minute vous n'avez toujours pas reçu le courriel de confirmation, vous pouvez réessayer d'activer votre comptre en vous rendant sur la page de  <a href="{% url 'login-fr' %}">connexion</a>) et vous pouvez réessayer de vous inscire.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Pour quel service dois-je me créer un compte?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              Vous devez vous inscire pour publier une annonce (Vente ou Recherche d'un livre), ou pour signaler un utilisateur. Vous n'avez pas besoin d'un compte pour acheter un livre ou pour voir les annonce.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Comment trouver le livre que je cherche?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              Le site web utilise <i>contains</i> la recherche rapide. Ceci signifie que le moteur de recherche vous montre toutes les annonces qui contiennent les éléments que vous avez entré. Par exemble, si vous recherchez l'ISBN «123», le moteur de recherche truvera toute les occurences pour «123» dans notre base de données. Ceci signifie que les résultats inclueraient «1234567891011», «2341233447672», et «3212394583582», mais pas «1, 2, 3» ou «1-2-3». Voici pourquoi chercher l'ISBN du livre (versus le nom de l'auteur ou le titre du livre) est le moyen de recherche le plus efficace pour vendre ou acheter un livre.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Comment modifier mon profil?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              Vous pouvez modifier vos informations à tout moment <a href="{% url 'update-profile-fr' %}">ici</a>.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Comment signaler un utilisateur?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              Vous ne pouvez signaler un utilisateur qu'une seule fois. Veuillez ne signaler un utilisateur que pour une raison valide...
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            Comment contacter un vendeur?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              Vous pouvez contacter le vendeur par telephone ou par courriel. Les coordonnées du vendeur sont disponibles sous la section contact pour chaque annonce.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+            Comment voir les détails de chaque annonce?
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <img src="{% static 'selling/images/post.png' %}" width="1000">
+            <p class="mt-2">A: Titre de l'annonce</p>
+            <p>B: date de publication</p>
+            <p>C: code postal du lieu de l'échange</p>
+            <p>D: description de l'article</p>
+            <p>E: Prix de l'article</p>
+            <h4>Après avoir cliqué sur le titre de l'annonce:</h4>
+            <img src="{% static 'selling/images/post_info.png' %}" width="1000">
+            <p>1: Titre de l'annonce</p>
+            <p>2: Prix de l'article</p>
+            <p>3: date de publication</p>
+            <p>4: adresse du lieu d'achat/échange</p>
+            <p>5: description</p>
+            <p>6: Auteur du livre</p>
+            <p>7: information du revendeur</p>
+            <p>8: signaler l'utilisateur</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingEight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+            Combien de temps une annonce demeure-t-elle publiée?
+          </button>
+        </h2>
+        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Les annonces sont retirées après 60 jours.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingNine">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+            Y a-t-il un nombre d'annonce maximum par utilisateur?
+          </button>
+        </h2>
+        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Oui, 50 publication.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+            Quel est le processus de recherche recommendé?
+          </button>
+        </h2>
+        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>1. Rechercher l'ISBN de votre livre dans la barre de recherche</p>
+            <p>2. Parcourir les annonces proposées</p>
+            <p>3. Cliquer sur le titre d'une annonce pour voir les informations plus détaillées</p>
+            <p>4. Lorsque vous trouvez une annonce qui vous convient, trouvez les informations du revendeur dans le bas de l'annonce</p>
+            <p>5. Contacter le vendeur et trouver un point et une date de rencontre</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFourteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+            Quelles règles dois-je suivre?
+          </button>
+        </h2>
+        <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Veuillez vous référer aux termes et conditions d'utilisation de notre site web.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFifteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+            Puis-je publier le même article plusieurs fois?
+          </button>
+        </h2>
+        <div id="collapseFifteen" class="accordion-collapse collapse" aria-labelledby="headingFifteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Non, vous pourriez recevoir un avertissement qui pourrait résulter à votre expulsion de la plateforme..
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingEleven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+            Vous avez trouvé un bug ou une erreur/typo?
+          </button>
+        </h2>
+        <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Écrivez-nous à <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwelve">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+           Votre compte s'est fait pirater?
+          </button>
+        </h2>
+        <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Écrivez-nous à <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThirteen">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+            D'autres questions/demandes?
+          </button>
+        </h2>
+        <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Écrivez-nous à <a href="mailto:trouveteslivres@gmail.com">trouveteslivres@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "selling/base.html" %}
+{% load static %}
+{% block content %}
+<div class="form-containers-container">
+    <div class="registration-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="colored-legend">Log In</legend>
+                {{ form.as_p  }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger navbar-sell-button submit-blue-button" type="submit">Log In</button>
+            </div>
+        </form>
+        <div class="pt-3 submit-blue-button">
+            <small class="text-muted"><a href="{% url 'reset_password' %}">Forgot username or password?</a></small><br>
+            <small class="text-muted"><a href="{% url 'resend-activation-email' %}">Resend activation email?</a></small><br>
+            <small class="text-muted">Do you need an account? <a href="{% url 'register' %}" class="px-2">Sign up</a></small>
+        </div>
+    </div>
+</div>
+{% endblock content %}
